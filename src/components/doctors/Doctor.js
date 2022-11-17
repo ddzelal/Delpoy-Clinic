@@ -13,7 +13,7 @@ function Doctor({ doctor }) {
   const doctorImgUrl =
     "https://img.freepik.com/free-vector/doctor-character-background_1270-84.jpg?w=2000";
   return (
-    <div className="card mt-3">
+    <div id="doctor_card" className="card mt-3">
       <div className="card-header">
         <h3>{doctor.name}</h3>
       </div>

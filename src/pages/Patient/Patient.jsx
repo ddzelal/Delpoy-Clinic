@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Route, useHistory } from "react-router-dom";
 import AboutYou from "../../components/aboutYou/AboutYou";
@@ -17,8 +17,7 @@ const Patient = () => {
 
   const { profile } = useSelector((store) => store.profile);
 
-  const getDataFromState = useCallback(() => {
-    // console.log(user?.accessToken, "USER ACCES TOKEN");
+  useEffect(() => {
     dispatch(getProfile(user?.accessToken));
     if (user?.accessToken) {
       dispatch(getDoctors(user?.accessToken));
@@ -26,11 +25,8 @@ const Patient = () => {
     } else {
       history.replace("/login");
     }
-  }, [dispatch, history, user?.accessToken]);
-
-  useEffect(() => {
-    getDataFromState();
-  }, [getDataFromState]);
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <>
