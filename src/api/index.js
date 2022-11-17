@@ -112,7 +112,6 @@ const getAllPatientAppointments = async (token) => {
         Authorization: token,
       },
     });
-    console.log(data.data, "DATA API APPOINTMENTS");
     return data.data;
   } catch (error) {
     console.log(error);
@@ -136,6 +135,32 @@ const deleteAppointments = async (token, id, history) => {
   }
 };
 
+const getAdminDoctors = async (token) => {
+  try {
+    const { data } = await instance.get("AdminController.php?fetch=doctors", {
+      headers: {
+        Authorization: token,
+      },
+    });
+    return data.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const getAdminPatient = async (token) => {
+  try {
+    const { data } = await instance.get("AdminController.php?fetch=patients", {
+      headers: {
+        Authorization: token,
+      },
+    });
+    return data.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const apiObject = {
   login,
   register,
@@ -145,6 +170,8 @@ const apiObject = {
   requestChangeDoctor,
   getAllPatientAppointments,
   deleteAppointments,
+  getAdminDoctors,
+  getAdminPatient,
 };
 
 export default apiObject;

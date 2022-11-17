@@ -6,10 +6,9 @@ import Doctor from "./Doctor";
 
 function DoctorsList() {
   const [filteredDoctors, setFilteredDoctors] = useState([]);
-
   const { doctors } = useSelector((store) => store.doctors);
-  // const { user } = useSelector((store) => store.user);
   let inputValue = useRef();
+
   const searchDoctors = () => {
     setFilteredDoctors(
       doctors?.filter((d) => {
