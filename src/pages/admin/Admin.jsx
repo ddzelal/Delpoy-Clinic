@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { Route, useHistory } from "react-router-dom";
 import apiObject from "../../api";
-import AdminSideBar from "./AdminSideBar";
+import AdminHome from "./AdminHome";
+import AdminPatients from "./AdminPatients";
 
 function Admin() {
   const [doctors, setDoctors] = useState([]);
@@ -22,16 +23,20 @@ function Admin() {
           history.replace("/login");
         }
       } catch (error) {
-        console.log(error);
+        console.log(error, doctors);
       }
     })();
 
     // eslint-disable-next-line
-  }, [user, doctors, patient]);
+  }, [user]);
 
   return (
     <>
-      <AdminSideBar />
+      <Route path="/admin" exact component={AdminHome}></Route>
+      <Route
+        path="/admin/view-patients"
+        render={() => <AdminPatients patient={patient} />}
+      ></Route>
     </>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
+import { Link } from "react-router-dom";
 
 function AdminSideBar() {
   const [show, setShow] = useState(false);
@@ -10,7 +11,7 @@ function AdminSideBar() {
 
   return (
     <>
-      <Button variant="info" onClick={handleShow}>
+      <Button variant="light" onClick={handleShow}>
         Admin Menu
       </Button>
 
@@ -19,8 +20,14 @@ function AdminSideBar() {
           <Offcanvas.Title>Admin Controllers</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          Some text as placeholder. In real life you can have the elements you
-          have chosen. Like, text, images, lists, etc.
+          <ul>
+            <li>
+              <Link to="/admin/view-patients">View all patients</Link>
+            </li>
+            <li>
+              <Link to="/admin/view-doctors">View all doctors</Link>
+            </li>
+          </ul>
         </Offcanvas.Body>
       </Offcanvas>
     </>

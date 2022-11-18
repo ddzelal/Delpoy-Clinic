@@ -6,6 +6,7 @@ import { setUser } from "../../store/user";
 import { saveUser, getUser } from "../../utils";
 import { setDoctors } from "../../store/doctors";
 import { Button } from "react-bootstrap";
+import AdminSideBar from "../../pages/admin/AdminSideBar";
 function Navbar() {
   const dispatch = useDispatch();
   // const { user } = useSelector((store) => store.user);
@@ -67,6 +68,13 @@ function Navbar() {
               <Button className="ml-2" variant="danger" onClick={onLogout}>
                 Logoout
               </Button>
+            </>
+          )}
+        </li>
+        <li className="nav-item mr-2">
+          {userToken.role === "Admin" && (
+            <>
+              <AdminSideBar />
             </>
           )}
         </li>
