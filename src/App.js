@@ -38,6 +38,7 @@ function App() {
       <Route path="/doctor" component={() => <h1>Doctor</h1>} />
       <Route path="/admin" component={Admin} />
       <Route path="/patient" component={Patient} />
+      <Route path="*" component={<h1>ERROR</h1>} />
     </div>
   );
 }
