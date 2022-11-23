@@ -1,4 +1,4 @@
-import { Redirect, Route, useHistory } from "react-router-dom";
+import { Redirect, Route, Switch, useHistory } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
@@ -30,15 +30,17 @@ function App() {
   return (
     <div>
       <Navbar />
-      <Route path="/" exact component={Home}>
-        {user && <Redirect to={user?.role.toLowerCase()}></Redirect>}
-      </Route>
-      <Route path="/login" component={Login} />
-      <Route path="/register" component={Register} />
-      <Route path="/doctor" component={() => <h1>Doctor</h1>} />
-      <Route path="/admin" component={Admin} />
-      <Route path="/patient" component={Patient} />
-      <Route path="*" component={() => <h1>ERROR</h1>} />
+      <Switch>
+        <Route path="/" exact component={Home}>
+          {user && <Redirect to={user?.role.toLowerCase()}></Redirect>}
+        </Route>
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
+        <Route path="/doctor" component={() => <h1>Doctor</h1>} />
+        <Route path="/admin" component={Admin} />
+        <Route path="/patient" component={Patient} />
+        <Route path="*" component={() => <h1>ERROR</h1>} />
+      </Switch>
     </div>
   );
 }
